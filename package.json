@@ -4,7 +4,9 @@
   "description": "website PAW pra-UTS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node index",
+    "dev" : "nodemon index"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +20,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.5"
+    "nodemon": "^3.1.6"
   }
 }
