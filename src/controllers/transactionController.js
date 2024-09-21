@@ -83,7 +83,7 @@ exports.getFilteredTransactions = async (req, res) => {
 // Menghapus transaksi
 exports.deleteTransaction = async (req, res) => {
   try {
-    const transaction = await Transaction.findById(req.params.id);
+    const transaction = await Transaction.findByIdAndDelete(req.params.id);
 
     if (!transaction) {
       return res.status(404).json({
@@ -92,11 +92,9 @@ exports.deleteTransaction = async (req, res) => {
       });
     }
 
-    await transaction.remove();
-
     res.status(200).json({
       success: true,
-      data: {},
+      message: "Transaction deleted successfully",
     });
   } catch (error) {
     res.status(500).json({
