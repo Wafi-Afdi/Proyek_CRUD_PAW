@@ -3,13 +3,14 @@ const Transaction = require("../models/Transaction");
 // Menambah transaksi baru
 exports.addTransaction = async (req, res) => {
   try {
-    const { amount, description, category, type } = req.body;
+    const { name, description, category, amount, date } = req.body;
 
     const transaction = new Transaction({
-      amount,
+      name,
       description,
       category,
-      type,
+      amount,
+      date,
     });
 
     await transaction.save();
@@ -109,11 +110,11 @@ exports.deleteTransaction = async (req, res) => {
 exports.updateTransaction = async (req, res) => {
   try {
     const { id } = req.params;
-    const { amount, description, category, type } = req.body;
+    const { name, description, category, amount, date } = req.body;
 
     const transaction = await Transaction.findByIdAndUpdate(
       id,
-      { amount, description, category, type },
+      { name, description, category, amount, date },
       { new: true, runValidators: true }
     );
 
