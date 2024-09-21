@@ -6,6 +6,7 @@ const {
   deleteTransaction,
   getFilteredTransactions,
   updateTransaction,
+  dapatkanSemuaKategori
 } = require("../controllers/transactionController");
 
 // Route untuk menambah transaksi baru
@@ -24,6 +25,6 @@ router.put("/transactions/:id", updateTransaction);
 router.delete("/transactions/:id", deleteTransaction);
 
 // Route untuk dapatkan kategori 
-router.get("/kategori", getFilteredTransactions);
+router.get("/kategori", dapatkanSemuaKategori);
 
 module.exports = router;
