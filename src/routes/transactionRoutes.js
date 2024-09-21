@@ -23,4 +23,7 @@ router.put("/transactions/:id", updateTransaction);
 // Route untuk menghapus transaksi berdasarkan ID
 router.delete("/transactions/:id", deleteTransaction);
 
+// Route untuk dapatkan kategori 
+router.get("/kategori", getFilteredTransactions);
+
 module.exports = router;
