@@ -49,11 +49,10 @@ exports.getTransactions = async (req, res) => {
 // Filter transaksi
 exports.getFilteredTransactions = async (req, res) => {
   try {
-    const { type, category, minAmount, maxAmount, startDate, endDate } =
+    const { category, minAmount, maxAmount, startDate, endDate } =
       req.query;
     let query = {};
 
-    if (type) query.type = type;
     if (category) query.category = category;
     if (minAmount || maxAmount) {
       query.amount = {};
@@ -66,7 +65,7 @@ exports.getFilteredTransactions = async (req, res) => {
       if (endDate) query.date.$lte = new Date(endDate);
     }
 
-    const transactions = await Transaction.find(query);
+    const transactions = await Transaction.find(query).sort({ date: -1 });
 
     res.status(200).json({
       success: true,
