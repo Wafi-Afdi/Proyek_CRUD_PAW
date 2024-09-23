@@ -138,14 +138,15 @@ exports.updateTransaction = async (req, res) => {
 // Mendapatkan semua transaksi
 exports.dapatkanSemuaKategori = async (req, res) => {
   try {
-    const kategori = await Transaction.find().distinct("category").select('category');
-
+    const kategori = await Transaction.find().distinct("category");
+    console.log(kategori)
     res.status(200).json({
       success: true,
       count: kategori.length,
       data: kategori,
     });
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       success: false,
       message: "Server Error",
