@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const connectDB = require("./src/config/db");
 const transactionRoutes = require("./src/routes/transactionRoutes"); // Pastikan path ini sesuai
 const cors = require("cors");
+const errorHandler = require("./src/middleware/errorHandler")
+const morgan = require("morgan")
 
 // Memuat konfigurasi dari file .env
 dotenv.config();
@@ -22,6 +24,7 @@ app.use(
 
 // Middleware untuk parsing JSON
 app.use(express.json());
+app.use(morgan("dev"));
 
 // Rute API
 app.route("/").get((req,res,next) => {
@@ -29,6 +32,7 @@ app.route("/").get((req,res,next) => {
 })
 app.use("/api", require("./src/routes/transactionRoutes"));
 
+app.use(errorHandler)
 // Menentukan port dari variabel lingkungan atau 5000 sebagai default
 const PORT = process.env.PORT || 5000;
 

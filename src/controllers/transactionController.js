@@ -3,14 +3,14 @@ const Transaction = require("../models/Transaction");
 // Menambah transaksi baru
 exports.addTransaction = async (req, res) => {
   try {
-    const { name, description, category, amount, date } = req.body;
-
+    const { nama, deskripsi, kategori, nominal, date, description } = req.body;
+    //console.log(req.body)
     const transaction = new Transaction({
-      name,
-      description,
-      category,
-      amount,
-      date,
+      name : nama,
+      description : description,
+      category : kategori,
+      amount : nominal,
+      date : date,
     });
 
     await transaction.save();
@@ -20,6 +20,7 @@ exports.addTransaction = async (req, res) => {
       data: transaction,
     });
   } catch (error) {
+    console.log(error.stack)
     res.status(500).json({
       success: false,
       message: "Server Error",
