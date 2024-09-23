@@ -24,6 +24,9 @@ app.use(
 app.use(express.json());
 
 // Rute API
+app.route("/").get((req,res,next) => {
+  return res.status(201).json({message : "Masuk"})
+})
 app.use("/api", require("./src/routes/transactionRoutes"));
 
 // Menentukan port dari variabel lingkungan atau 5000 sebagai default
