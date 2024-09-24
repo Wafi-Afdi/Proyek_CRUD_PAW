@@ -3,13 +3,13 @@ const Transaction = require("../models/Transaction");
 // Menambah transaksi baru
 exports.addTransaction = async (req, res) => {
   try {
-    const { name, kategori, nominal, date, description } = req.body;
+    const { name, category, amount, date, description } = req.body;
     //console.log(req.body)
     const transaction = new Transaction({
       name : name,
       description : description,
-      category : kategori,
-      amount : nominal,
+      category : category,
+      amount : amount,
       date : date,
     });
 
